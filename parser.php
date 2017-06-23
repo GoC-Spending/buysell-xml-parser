@@ -14,12 +14,11 @@ function loadContracts() {
 
 function parseContracts($xs) {
     return $xs->findAll('//item')->map(function($contract) {
-        return [
+        return array_merge([
             'title' => $contract->find('title')->extract(),
             'url' => $contract->find('link')->extract(),
             'department' => $contract->find('dc:creator')->extract(),
-            'description' => parseDescription($contract->find('description')->extract()),
-        ];
+        ], parseDescription($contract->find('description')->extract()));
     });
 }
 
