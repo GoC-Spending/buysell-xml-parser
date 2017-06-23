@@ -4,20 +4,24 @@ require_once dirname(__FILE__) . '/vendor/autoload.php';
 
 use XPathSelector\Selector;
 
-$data = file_get_contents(dirname(__FILE__) . '/data.xml');
+var_dump(parseContracts(loadContracts()));
 
-$xs = Selector::loadXML($data);
+function loadContracts() {
+    $data = file_get_contents(dirname(__FILE__) . '/data.xml');
 
-$contracts = $xs->findAll('//item')->map(function($contract) {
-    return [
-        'title' => $contract->find('title')->extract(),
-        'url' => $contract->find('link')->extract(),
-        'department' => $contract->find('dc:creator')->extract(),
-        'description' => parseDescription($contract->find('description')->extract()),
-    ];
-});
+    return Selector::loadXML($data);
+}
 
-var_dump($contracts);
+function parseContracts($xs) {
+    return $xs->findAll('//item')->map(function($contract) {
+        return [
+            'title' => $contract->find('title')->extract(),
+            'url' => $contract->find('link')->extract(),
+            'department' => $contract->find('dc:creator')->extract(),
+            'description' => parseDescription($contract->find('description')->extract()),
+        ];
+    });
+}
 
 function parseDescription($description) {
     $descriptionKeys = [];
