@@ -1,6 +1,9 @@
 {
     "name": "gocspending/buysellxml-parser",
     "type": "project",
+    "scripts": {
+        "parse": "@php parser.php"
+    },
     "require": {
         "stil/xpath-selector": "~2.0"
     }
