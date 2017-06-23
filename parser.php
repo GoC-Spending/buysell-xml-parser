@@ -50,6 +50,9 @@ function parseDescription($description) {
 function outputCsv($contracts) {
     $writer = Writer::createFromPath(new SplFileObject(dirname(__FILE__) . '/contracts.csv', 'a+'), 'w');
 
+    // tell excel that the COMMA separated values file is separated with... commas
+    $writer->insertOne('sep=,');
+
     // headers
     $writer->insertOne(array_keys($contracts[0]));
 
