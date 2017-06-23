@@ -3,8 +3,9 @@
 require_once dirname(__FILE__) . '/vendor/autoload.php';
 
 use XPathSelector\Selector;
+use League\Csv\Writer;
 
-var_dump(parseContracts(loadContracts()));
+outputCsv(parseContracts(loadContracts()));
 
 function loadContracts() {
     $data = file_get_contents(dirname(__FILE__) . '/data.xml');
@@ -15,9 +16,9 @@ function loadContracts() {
 function parseContracts($xs) {
     return $xs->findAll('//item')->map(function($contract) {
         return array_merge([
-            'title' => $contract->find('title')->extract(),
-            'url' => $contract->find('link')->extract(),
-            'department' => $contract->find('dc:creator')->extract(),
+            'title' => trim($contract->find('title')->extract()),
+            'url' => trim($contract->find('link')->extract()),
+            'department' => trim($contract->find('dc:creator')->extract()),
         ], parseDescription($contract->find('description')->extract()));
     });
 }
@@ -35,17 +36,25 @@ function parseDescription($description) {
     $i = 0;
     foreach ($descriptionRows as $row) {
         if ($i % 2 == 0) {
-            $descriptionKeys[] = $row->extract();
+            $descriptionKeys[] = trim($row->extract());
         } else {
-            $descriptionValues[] = $row->extract();
+            $descriptionValues[] = trim($row->extract());
         }
 
         $i++;
     }
 
-    return array_combine($descriptionKeys, $descriptionValues);;
+    return array_combine($descriptionKeys, $descriptionValues);
 }
 
 function outputCsv($contracts) {
-    
+    $writer = Writer::createFromPath(new SplFileObject(dirname(__FILE__) . '/contracts.csv', 'a+'), 'w');
+
+    // headers
+    $writer->insertOne(array_keys($contracts[0]));
+
+    // rows
+    foreach ($contracts as $contract) {
+        $writer->insertOne(array_values($contract));
+    }
 }
