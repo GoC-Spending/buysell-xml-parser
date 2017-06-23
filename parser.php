@@ -45,3 +45,7 @@ function parseDescription($description) {
 
     return array_combine($descriptionKeys, $descriptionValues);;
 }
+
+function outputCsv($contracts) {
+    
+}

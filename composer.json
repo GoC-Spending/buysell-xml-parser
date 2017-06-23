@@ -5,6 +5,7 @@
         "parse": "@php parser.php"
     },
     "require": {
-        "stil/xpath-selector": "~2.0"
+        "stil/xpath-selector": "~2.0",
+        "league/csv": "^8.2"
     }
 }
