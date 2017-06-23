@@ -1,0 +1,7 @@
+{
+    "name": "gocspending/buysellxml-parser",
+    "type": "project",
+    "require": {
+        "stil/xpath-selector": "~2.0"
+    }
+}

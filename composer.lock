@@ -1,0 +1,41 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "31121517e7e18d7c2c9208dee262279c",
+    "packages": [
+        {
+            "name": "stil/xpath-selector",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stil/xpath-selector.git",
+                "reference": "06b40813095e14ddc0c4dbf7e7108f83279514d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stil/xpath-selector/zipball/06b40813095e14ddc0c4dbf7e7108f83279514d7",
+                "reference": "06b40813095e14ddc0c4dbf7e7108f83279514d7",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "XPathSelector\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-12-08T16:54:18+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
