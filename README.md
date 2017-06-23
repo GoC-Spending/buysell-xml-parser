@@ -20,7 +20,7 @@ You're ready to go!
 2. Download the feed linked by the RSS icon in the results (it caps at 250 contracts, so search/filter accordingly)
 3. Rename the file `data.xml` and store it in the root of this repository
 
-## Parsing departments
+## Parsing
 
 1. Run `composer parse`
 2. The parsed data will be saved in `contracts.csv`
