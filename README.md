@@ -1,6 +1,8 @@
 # buysell-xml-parser
 
-Simple parser to extract contracting data from <https://buyandsell.gc.ca>.
+Simple parser to extract contracting data from searches conducted on <https://buyandsell.gc.ca>.
+
+**NB**: The contract history dataset that powers Buyandsell is published by PWGSC/PSPC: <https://buyandsell.gc.ca/procurement-data/contract-history/download-contract-history-data>. If you want more comprehensive results and finer control over your search terms, it’s probably best to use that dataset directly. If, however, you want just to quickly get the contract metadata for a given search on Buyandsell, this tool will help you do that.
 
 ## Dependencies 
 
